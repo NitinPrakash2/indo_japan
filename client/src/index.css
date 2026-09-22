@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #F6F3ED;
+    color: #222222;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Custom Japanese Kanji Stamp Badge */
+.kanji-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #C83B3B;
+  color: #C83B3B;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.05em;
+  background-color: rgba(200, 59, 59, 0.05);
+}
+
+/* Subtle line pattern background */
+.bg-cream-paper {
+  background-color: #F6F3ED;
+}
+
+.bg-dark-midnight {
+  background-color: #0B1120;
+}
+
+.bg-card-charcoal {
+  background-color: #262422;
+}
+
+.text-terracotta {
+  color: #C83B3B;
+}
+
+.bg-terracotta {
+  background-color: #C83B3B;
+}
+
+.border-terracotta {
+  border-color: #C83B3B;
+}
+
+/* Infinite Marquee Animations */
+@keyframes marquee-up {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes marquee-down {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0%); }
+}
+
+@keyframes marquee-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-up {
+  animation: marquee-up 24s linear infinite;
+}
+
+.animate-marquee-down {
+  animation: marquee-down 28s linear infinite;
+}
+
+.animate-marquee-left {
+  animation: marquee-left 25s linear infinite;
+}
+
+.pause-hover:hover {
+  animation-play-state: paused;
+}
+
