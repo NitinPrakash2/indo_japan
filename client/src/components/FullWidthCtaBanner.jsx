@@ -1,50 +1,57 @@
 import React from 'react';
-import { ArrowUpRight, Download, Sparkles } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export const FullWidthCtaBanner = ({ onOpenApply }) => {
   return (
-    <section className="relative py-28 px-6 text-center text-white overflow-hidden bg-[#0A0E1A]">
-      {/* Background Image of Mount Fuji with dramatic dark gradient */}
+    <section className="relative isolate overflow-hidden bg-[#0A0A0A] py-28 md:py-36 text-center text-white">
+      {/* Background Loop Video (Mount Fuji with Passing Clouds) */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 -z-20 w-full h-full object-cover object-center opacity-65 pointer-events-none"
+        aria-hidden="true"
+      >
+        <source src="/fuji-loop.mp4" type="video/mp4" />
+        <source src="https://img.etb2bimg.com/files/cp/upload-1786606589-upload-1785848156-fuji-loop-1-1.mp4" type="video/mp4" />
+      </video>
+
+      {/* Radial Gradient Vignette Overlay matching exact reference site */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 scale-105"
+        className="absolute inset-0 -z-10 pointer-events-none"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=1600&auto=format&fit=crop&q=80')`,
+          backgroundImage: 'radial-gradient(rgba(10, 10, 10, 0.35) 0%, rgba(10, 10, 10, 0.78) 70%)',
         }}
-      ></div>
+        aria-hidden="true"
+      />
 
-      {/* Dark Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-black/60 to-[#0B1120]/80"></div>
-
-      <div className="relative max-w-4xl mx-auto space-y-6">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#C83B3B] text-xs font-bold uppercase tracking-widest">
-          <Sparkles className="w-3.5 h-3.5 text-[#C83B3B]" />
-          <span className="text-white">Limited Cohort Size • Application Led</span>
-        </div>
-
-        <h2 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
-          Join The <span className="italic text-[#C83B3B]">Japan Immersion</span>
-        </h2>
-
-        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          Step beyond conventional business travel. Immerse yourself in the ecosystems, institutions, and visionary leaders defining the next century of industry.
+      <div className="relative z-10 max-w-4xl mx-auto px-6">
+        {/* Red Tagline */}
+        <p className="font-sans text-xs md:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#C83B3B] mb-4">
+          Join the Japan Immersion
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+        {/* Elegant Editorial Heading */}
+        <h2 className="font-editorial text-4xl sm:text-5xl md:text-6xl text-white font-normal leading-[1.12] tracking-tight mb-5">
+          Built for people going somewhere
+        </h2>
+
+        {/* Subtitle */}
+        <p className="font-sans text-base md:text-lg text-neutral-300 max-w-xl mx-auto leading-relaxed mb-8">
+          Explore our experiences. Discover what’s coming next.
+        </p>
+
+        {/* Apply CTA Button */}
+        <div>
           <button
+            type="button"
             onClick={onOpenApply}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#C83B3B] hover:bg-[#B32D2D] text-white text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-200 shadow-xl cursor-pointer active:scale-98"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-[#C83B3B] hover:bg-[#B32D2D] text-white text-xs md:text-[13px] font-medium uppercase tracking-[0.18em] transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
           >
             <span>Apply Now</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer"
-          >
-            <Download className="w-4 h-4" />
-            <span>Download Brochure</span>
-          </a>
         </div>
       </div>
     </section>

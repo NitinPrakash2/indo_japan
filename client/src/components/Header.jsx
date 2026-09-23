@@ -60,7 +60,7 @@ export const Header = ({ onOpenApply }) => {
             <a
               key={idx}
               href={link.href}
-              className="text-[12.5px] font-medium text-[#2B2B2B] hover:text-[#C83B3B] tracking-normal transition-colors duration-200"
+              className="text-[13px] font-normal text-[#2B2B2B] hover:text-[#C83B3B] tracking-normal transition-colors duration-200"
             >
               {link.label}
             </a>

@@ -1,68 +1,85 @@
 import React from 'react';
-import { ArrowRight, Calendar, MapPin, Sparkles } from 'lucide-react';
+import fujiPagodaImg from '../assets/max-bender-FuxYvi-hcWQ-unsplash.jpg';
+import titleBadge from '../assets/hero_japan_title_badge.webp';
 
 export const Hero = ({ onOpenApply }) => {
   return (
-    <section className="relative overflow-hidden bg-[#F6F3ED] pt-14 pb-20 sm:pt-20 sm:pb-28 border-b border-black/5">
-      {/* Background Decorative Graphic (Subtle Japanese Motif) */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.035] flex items-center justify-center">
-        <svg viewBox="0 0 800 800" className="w-[1100px] h-[1100px]" fill="currentColor">
-          <circle cx="400" cy="400" r="300" stroke="#C83B3B" strokeWidth="4" fill="none" />
-          <circle cx="400" cy="400" r="220" stroke="#1A1A1A" strokeWidth="2" fill="none" strokeDasharray="8 8" />
-          <path d="M150 400 H 650 M 400 150 V 650" stroke="#1A1A1A" strokeWidth="1.5" />
-          <text x="400" y="440" fontSize="160" textAnchor="middle" fontFamily="serif" fill="#C83B3B">日本</text>
-        </svg>
-      </div>
+    <section id="banner" className="relative isolate overflow-hidden bg-[#F8F6F1] min-h-[580px] sm:min-h-[640px] flex items-center justify-center">
+      {/* Background Fuji & Pagoda Image with the exact Japanese paper effect */}
+      <img
+        src={fujiPagodaImg}
+        alt="Mount Fuji and Chureito Pagoda Japan"
+        className="absolute inset-0 -z-20 w-full h-full object-cover object-[center_32%] pointer-events-none opacity-30 mix-blend-multiply filter contrast-[0.98] saturate-[0.90]"
+      />
 
-      <div className="relative max-w-5xl mx-auto px-6 text-center">
-        {/* Top Kanji Stamp & Edition Badge */}
-        <div className="inline-flex items-center gap-3 mb-6">
-          <div className="kanji-stamp shadow-sm">
-            日
+      {/* Atmospheric Soft Gradient Overlays (exact reference website style) */}
+      {/* 1. Overall high-key paper wash */}
+      <div 
+        className="absolute inset-0 -z-10 pointer-events-none"
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, rgba(248, 246, 241, 0.60) 0%, rgba(248, 246, 241, 0.35) 45%, rgba(248, 246, 241, 0.25) 100%)'
+        }}
+        aria-hidden="true"
+      />
+
+      {/* 2. Soft radial glow in center so text has maximum clarity and contrast */}
+      <div 
+        className="absolute inset-0 -z-10 pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(ellipse 75% 65% at 50% 48%, rgba(248, 246, 241, 0.88) 0%, rgba(248, 246, 241, 0.40) 65%, transparent 100%)'
+        }}
+        aria-hidden="true"
+      />
+
+      {/* 3. Bottom melt gradient into next section */}
+      <div 
+        className="absolute inset-x-0 bottom-0 -z-10 h-48 md:h-72 pointer-events-none"
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, transparent 0%, rgba(248, 246, 241, 0.7) 45%, #F8F6F1 100%)'
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Hero Content Container */}
+      <div className="w-full max-w-[82rem] mx-auto px-6 md:px-12 pt-16 md:pt-20 pb-16 md:pb-24 text-center">
+        {/* Title Graphic / Badge (ET Immersions Japan Edition with Kanji Stamp) */}
+        <h1 className="m-0 flex justify-center items-center" id="hero-title">
+          <img
+            src={titleBadge}
+            alt="ET Immersions — Japan Edition: Experience Japan through business, leadership & culture"
+            className="h-auto w-full max-w-[20rem] sm:max-w-[26rem] md:max-w-[32rem] object-contain drop-shadow-xs"
+          />
+        </h1>
+
+        {/* Lead Narrative & Details */}
+        <div className="mt-6 md:mt-8">
+          <div className="grid justify-items-center gap-6">
+            <p className="max-w-2xl mx-auto text-[0.9375rem] md:text-[1.0625rem] leading-[1.7] text-[#4A4A4A] font-normal font-sans">
+              Curated for business leaders, with access to influential companies, industry leaders and institutions — complemented by peer exchange, innovation visits and experiences that reveal Japan beyond the boardroom.
+            </p>
+
+            {/* Red Separator + Location & Dates */}
+            <div className="grid gap-2 border-t-2 border-[#C83B3B] pt-4 min-w-[280px]">
+              <p className="font-sans tracking-[0.22em] uppercase text-[#1A1A1A] text-sm md:text-base font-medium">
+                Tokyo, Japan
+              </p>
+              <p className="font-sans tracking-[0.24em] uppercase text-[#1A1A1A] text-[0.6875rem] font-normal">
+                29 August – 02 September 2026
+              </p>
+            </div>
+
+            {/* Apply CTA Button */}
+            <div className="flex w-full max-w-xs flex-col sm:flex-row sm:max-w-none items-center justify-center gap-4 pt-1">
+              <button
+                type="button"
+                onClick={onOpenApply}
+                className="inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 px-8 text-[0.72rem] font-medium tracking-[0.2em] uppercase text-white bg-[#C83B3B] border border-[#C83B3B] hover:bg-[#B32D2D] hover:border-[#B32D2D] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 cursor-pointer active:translate-y-0"
+              >
+                <span>Apply to join</span>
+                <span className="text-sm">→</span>
+              </button>
+            </div>
           </div>
-          <div className="h-4 w-[1px] bg-[#C83B3B]/40"></div>
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
-            GLOBAL LEADERSHIP IMMERSION
-          </span>
-        </div>
-
-        {/* Main Headline */}
-        <div className="mb-6">
-          <h1 className="font-editorial text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight text-[#1A1A1A] leading-none">
-            Japan
-          </h1>
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.4em] text-[#666666] mt-3">
-            EDITION • EXECUTIVE IMMERSION PROGRAM
-          </p>
-        </div>
-
-        {/* Lead Paragraph */}
-        <p className="max-w-2xl mx-auto text-base sm:text-lg text-[#444444] font-normal leading-relaxed mb-8">
-          Curated for business leaders, with access to influential companies, industry leaders and institutions — complemented by peer exchange, innovation visits and experiences that reveal Japan beyond the boardroom.
-        </p>
-
-        {/* Date and Location Badge */}
-        <div className="inline-flex flex-wrap items-center justify-center gap-4 sm:gap-8 px-6 py-3 bg-white border border-black/8 rounded-none shadow-xs mb-10">
-          <div className="flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider text-[#1A1A1A] uppercase">
-            <MapPin className="w-4 h-4 text-[#C83B3B]" />
-            <span>Tokyo, Japan</span>
-          </div>
-          <div className="hidden sm:block h-4 w-[1px] bg-black/15"></div>
-          <div className="flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider text-[#1A1A1A] uppercase">
-            <Calendar className="w-4 h-4 text-[#C83B3B]" />
-            <span>29 August – 02 September 2026</span>
-          </div>
-        </div>
-
-        {/* Action CTA */}
-        <div>
-          <button
-            onClick={onOpenApply}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#C83B3B] hover:bg-[#B32D2D] text-white text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-200 shadow-md hover:shadow-lg active:scale-98 cursor-pointer"
-          >
-            <span>Apply to Join</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
       </div>
     </section>
