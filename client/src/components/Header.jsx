@@ -90,16 +90,9 @@ export const Header = ({ onOpenApply }) => {
   return (
     <>
       <header 
-        className={`sticky top-0 z-40 w-full transition-all duration-300 backdrop-blur-xl [-webkit-backdrop-blur:16px] ${
-          scrolled 
-            ? 'bg-[#F6F3ED]/85 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border-b border-black/[0.06] py-2.5 sm:py-3' 
-            : 'bg-[#F6F3ED]/90 border-b border-black/[0.04] py-3 sm:py-3.5'
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+          scrolled ? 'glass-header-scrolled py-2.5 sm:py-3' : 'glass-header py-3 sm:py-3.5'
         }`}
-        style={{
-          backgroundColor: scrolled ? 'rgba(246, 243, 237, 0.85)' : 'rgba(246, 243, 237, 0.92)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-        }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
           {/* Brand Logo matching reference screenshot */}
@@ -155,6 +148,9 @@ export const Header = ({ onOpenApply }) => {
           </button>
         </div>
       </header>
+
+      {/* Header Height Spacer so content starts cleanly below fixed header */}
+      <div className="h-[58px] sm:h-[68px] w-full shrink-0" aria-hidden="true" />
 
       {/* Fullscreen Blurred Backdrop & Mobile Navigation Drawer */}
       {mobileMenuOpen && (
