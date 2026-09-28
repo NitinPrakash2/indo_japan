@@ -46,7 +46,7 @@ export const CustomSelect = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full px-3.5 py-2.5 bg-white border text-left text-xs transition-all duration-200 flex items-center justify-between cursor-pointer rounded-none select-none ${
+        className={`w-full px-3.5 py-2.5 min-h-[42px] bg-white border text-left text-xs transition-all duration-200 flex items-center justify-between cursor-pointer rounded-none select-none ${
           isOpen 
             ? 'border-[#C83B3B] ring-1 ring-[#C83B3B]/25' 
             : 'border-black/15 hover:border-black/30'
@@ -76,7 +76,7 @@ export const CustomSelect = ({
               <div
                 key={opt.value}
                 onClick={() => handleSelect(opt.value)}
-                className={`px-3.5 py-2.5 text-xs flex items-center justify-between cursor-pointer transition-colors duration-150 select-none ${
+                className={`px-3.5 py-3 sm:py-2.5 text-xs flex items-center justify-between cursor-pointer transition-colors duration-150 select-none ${
                   isSelected 
                     ? 'bg-[#C83B3B]/8 text-[#C83B3B] font-bold' 
                     : 'text-[#333333] hover:bg-[#F6F3ED] hover:text-[#C83B3B] font-medium'

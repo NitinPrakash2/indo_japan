@@ -42,11 +42,11 @@ export const VisionOverview = () => {
   ];
 
   return (
-    <section id="about" className="py-20 sm:py-24 bg-[#F6F3ED]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <section id="about" className="py-14 sm:py-24 bg-[#F6F3ED]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* Left Narrative Column */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-4 sm:space-y-6">
             <div className="inline-block">
               <span className="text-[11px] font-bold tracking-[0.25em] text-[#C83B3B] uppercase">
                 THE ET IMMERSIONS PHILOSOPHY
@@ -54,7 +54,7 @@ export const VisionOverview = () => {
               <div className="h-[2px] w-12 bg-[#C83B3B] mt-1.5"></div>
             </div>
 
-            <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] leading-[1.2]">
+            <h2 className="font-editorial text-2xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] leading-[1.2]">
               The future belongs to those who <span className="italic text-[#C83B3B]">keep learning.</span>
             </h2>
 

@@ -3,7 +3,7 @@ import React from 'react';
 export const Footer = () => {
   return (
     <footer className="w-full bg-[#ECECEC] text-[#555555] pt-8 pb-6 border-t border-[#E0E0E0]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         
         {/* Top Logo & Social Bar */}
         <div className="flex items-center justify-between pb-6 border-b border-[#DCDCDC]">
@@ -41,7 +41,7 @@ export const Footer = () => {
             For any issues requiring immediate escalation, please write to{' '}
             <a
               href="mailto:shahbaz.khan@timesinternet.in"
-              className="font-bold text-[#333333] hover:text-black hover:underline"
+              className="font-bold text-[#333333] hover:text-black hover:underline break-all sm:break-normal"
             >
               shahbaz.khan@timesinternet.in
             </a>{' '}
@@ -49,7 +49,7 @@ export const Footer = () => {
           </p>
 
           {/* 2-Column Links Grid matching Screenshot 2 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-xl">
+          <div className="grid grid-cols-2 gap-4 sm:gap-8 max-w-xl">
             {/* Column 1 */}
             <ul className="space-y-2 text-[13px] text-[#555555]">
               <li><a href="#" className="hover:text-black transition-colors">About Us</a></li>

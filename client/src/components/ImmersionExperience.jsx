@@ -48,29 +48,29 @@ export const ImmersionExperience = () => {
   ];
 
   return (
-    <section id="experience" className="py-24 bg-[#F6F3ED]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section id="experience" className="py-14 sm:py-24 bg-[#F6F3ED]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
             CORE CURRICULUM & FIELD VISITS
           </span>
-          <h2 className="font-editorial text-4xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
+          <h2 className="font-editorial text-3xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
             Japan Immersion <span className="italic text-[#C83B3B]">Experience</span>
           </h2>
-          <p className="text-sm text-[#666666] mt-3">
+          <p className="text-xs sm:text-sm text-[#666666] mt-2.5 max-w-xl mx-auto px-2">
             Designed to help Indian entrepreneurs and executive leaders experience the operating principles behind Japanese mastery firsthand.
           </p>
         </div>
 
         {/* 3-Column Image Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {experiences.map((exp, idx) => {
             const Icon = exp.icon;
             return (
               <div
                 key={idx}
-                className="group relative h-[420px] rounded-none overflow-hidden border border-black/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-end p-7"
+                className="group relative h-[340px] sm:h-[420px] rounded-none overflow-hidden border border-black/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-end p-5 sm:p-7"
               >
                 {/* Background Image with Zoom on Hover */}
                 <div

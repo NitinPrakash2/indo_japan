@@ -20,7 +20,7 @@ function App() {
   const [isApplyOpen, setIsApplyOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#F6F3ED] text-[#222222] selection:bg-[#C83B3B] selection:text-white flex flex-col">
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#F6F3ED] text-[#222222] selection:bg-[#C83B3B] selection:text-white flex flex-col">
       {/* Top Header */}
       <Header onOpenApply={() => setIsApplyOpen(true)} />
 

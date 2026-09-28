@@ -36,7 +36,7 @@ export const WhyEconomicTimes = () => {
   ];
 
   return (
-    <section id="why-et" className="py-24 bg-[#ECE7DC] border-y border-black/5 relative overflow-hidden">
+    <section id="why-et" className="py-14 sm:py-24 bg-[#ECE7DC] border-y border-black/5 relative overflow-hidden">
       {/* Subtle Architectural Linework */}
       <div className="absolute inset-0 opacity-5 pointer-events-none flex items-center justify-center">
         <svg viewBox="0 0 1000 600" className="w-full h-full" fill="none" stroke="currentColor">
@@ -47,27 +47,27 @@ export const WhyEconomicTimes = () => {
         </svg>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
             THE ET IMMERSIONS ADVANTAGE
           </span>
-          <h2 className="font-editorial text-4xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
+          <h2 className="font-editorial text-3xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
             Why <span className="italic text-[#C83B3B]">The Economic Times?</span>
           </h2>
-          <p className="text-sm text-[#555555] mt-3">
+          <p className="text-xs sm:text-sm text-[#555555] mt-2.5 max-w-xl mx-auto px-2">
             Leveraging decades of bilateral trust, editorial depth, and convening power to deliver unprecedented global access.
           </p>
         </div>
 
         {/* 3x2 Charcoal Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {points.map((point, idx) => {
             const Icon = point.icon;
             return (
               <div
                 key={idx}
-                className="bg-[#242220] p-8 text-white rounded-none border border-white/10 hover:border-[#C83B3B]/60 transition-all duration-300 hover:-translate-y-1 shadow-md group"
+                className="bg-[#242220] p-6 sm:p-8 text-white rounded-none border border-white/10 hover:border-[#C83B3B]/60 transition-all duration-300 hover:-translate-y-1 shadow-md group"
               >
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-[#C83B3B] mb-6 group-hover:bg-[#C83B3B] group-hover:text-white transition-colors">
                   <Icon className="w-6 h-6" />

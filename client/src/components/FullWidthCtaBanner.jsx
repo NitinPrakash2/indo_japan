@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 export const FullWidthCtaBanner = ({ onOpenApply }) => {
   return (
-    <section className="relative isolate overflow-hidden bg-[#0A0A0A] py-28 md:py-36 text-center text-white">
+    <section className="relative isolate overflow-hidden bg-[#0A0A0A] py-18 sm:py-28 md:py-36 text-center text-white">
       {/* Background Loop Video (Mount Fuji with Passing Clouds) */}
       <video
         autoPlay
@@ -26,19 +26,19 @@ export const FullWidthCtaBanner = ({ onOpenApply }) => {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
         {/* Red Tagline */}
-        <p className="font-sans text-xs md:text-[13px] font-semibold uppercase tracking-[0.24em] text-[#C83B3B] mb-4">
+        <p className="font-sans text-[11px] sm:text-xs md:text-[13px] font-semibold uppercase tracking-[0.2em] sm:tracking-[0.24em] text-[#C83B3B] mb-3 sm:mb-4">
           Join the Japan Immersion
         </p>
 
         {/* Elegant Editorial Heading */}
-        <h2 className="font-editorial text-4xl sm:text-5xl md:text-6xl text-white font-normal leading-[1.12] tracking-tight mb-5">
+        <h2 className="font-editorial text-3xl sm:text-5xl md:text-6xl text-white font-normal leading-[1.15] tracking-tight mb-4 sm:mb-5 px-2">
           Built for people going somewhere
         </h2>
 
         {/* Subtitle */}
-        <p className="font-sans text-base md:text-lg text-neutral-300 max-w-xl mx-auto leading-relaxed mb-8">
+        <p className="font-sans text-sm sm:text-base md:text-lg text-neutral-300 max-w-xl mx-auto leading-relaxed mb-7 sm:mb-8 px-2">
           Explore our experiences. Discover what’s coming next.
         </p>
 

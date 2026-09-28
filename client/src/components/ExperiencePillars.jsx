@@ -51,28 +51,28 @@ export const ExperiencePillars = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#F6F3ED]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
+    <section className="py-14 sm:py-24 bg-[#F6F3ED]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
             WHAT YOUR IMMERSION INCLUDES
           </span>
-          <h2 className="font-editorial text-4xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
+          <h2 className="font-editorial text-3xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
             Experience <span className="italic text-[#C83B3B]">Pillars</span>
           </h2>
-          <p className="text-sm text-[#666666] mt-3">
+          <p className="text-xs sm:text-sm text-[#666666] mt-2.5 max-w-xl mx-auto px-2">
             An end-to-end executive program that balances institutional depth, peer learning, and seamless luxury logistics.
           </p>
         </div>
 
         {/* 3x3 White Card Grid with Red Left Border */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {pillars.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="bg-white p-6 sm:p-7 border-l-4 border-[#C83B3B] border-t border-r border-b border-black/8 shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 group"
+                className="bg-white p-5 sm:p-7 border-l-4 border-[#C83B3B] border-t border-r border-b border-black/8 shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-10 h-10 rounded-full bg-[#F6F3ED] flex items-center justify-center text-[#C83B3B] group-hover:bg-[#C83B3B] group-hover:text-white transition-colors">

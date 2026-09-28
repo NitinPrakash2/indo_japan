@@ -67,46 +67,46 @@ export const SpeakersGrid = () => {
   ];
 
   return (
-    <section id="speakers" className="py-24 bg-[#F6F3ED] border-b border-black/5">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section id="speakers" className="py-14 sm:py-24 bg-[#F6F3ED] border-b border-black/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Section Title */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
             DISTINGUISHED LEADERSHIP
           </span>
-          <h2 className="font-editorial text-4xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
+          <h2 className="font-editorial text-3xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
             Speakers & <span className="italic text-[#C83B3B]">Faculty</span>
           </h2>
-          <p className="text-sm text-[#666666] mt-3">
+          <p className="text-xs sm:text-sm text-[#666666] mt-2.5 max-w-xl mx-auto px-2">
             Engage directly with global industry veterans, policy architects, Japanese corporate directors, and innovation leaders.
           </p>
         </div>
 
         {/* 5-Column Responsive Speaker Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-6 lg:gap-8">
           {speakers.map((speaker, idx) => (
             <div key={idx} className="group text-center flex flex-col items-center">
-              <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-xs bg-[#EAE6DD] border border-black/10 group-hover:border-[#C83B3B]/60 transition-all duration-300">
+              <div className="relative w-full aspect-square mb-2.5 sm:mb-4 overflow-hidden rounded-xs bg-[#EAE6DD] border border-black/10 group-hover:border-[#C83B3B]/60 transition-all duration-300">
                 <img
                   src={speaker.image}
                   alt={speaker.name}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-3">
-                  <span className="text-[10px] text-white uppercase tracking-wider font-semibold">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-2 sm:p-3">
+                  <span className="text-[9px] sm:text-[10px] text-white uppercase tracking-wider font-semibold">
                     View Profile
                   </span>
                 </div>
               </div>
 
-              <h3 className="font-editorial text-base sm:text-lg font-bold text-[#1A1A1A] group-hover:text-[#C83B3B] transition-colors">
+              <h3 className="font-editorial text-sm sm:text-base lg:text-lg font-bold text-[#1A1A1A] group-hover:text-[#C83B3B] transition-colors leading-tight">
                 {speaker.name}
               </h3>
-              <p className="text-xs text-[#555555] font-medium mt-1 leading-tight line-clamp-2">
+              <p className="text-[11px] sm:text-xs text-[#555555] font-medium mt-1 leading-tight line-clamp-2">
                 {speaker.role}
               </p>
-              <p className="text-[11px] font-bold text-[#C83B3B] mt-1.5 uppercase tracking-wide">
+              <p className="text-[10px] sm:text-[11px] font-bold text-[#C83B3B] mt-1 uppercase tracking-wide">
                 {speaker.company}
               </p>
             </div>

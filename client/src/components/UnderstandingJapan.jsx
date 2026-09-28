@@ -226,15 +226,15 @@ export const UnderstandingJapan = () => {
     }
   };
 
-  const renderLogoColumn = (logos, animationClass) => {
+  const renderLogoColumn = (logos, animationClass, hiddenOnMobile = false) => {
     const doubled = [...logos, ...logos];
     return (
-      <div className="relative overflow-hidden h-[540px] w-28 sm:w-36">
-        <div className={`flex flex-col gap-3.5 ${animationClass} pause-hover`}>
+      <div className={`relative overflow-hidden h-[340px] sm:h-[460px] lg:h-[540px] w-24 sm:w-32 lg:w-36 ${hiddenOnMobile ? 'hidden sm:block' : 'block'}`}>
+        <div className={`flex flex-col gap-2.5 sm:gap-3.5 ${animationClass} pause-hover`}>
           {doubled.map((item, idx) => (
             <div
               key={idx}
-              className={`w-28 sm:w-36 h-24 sm:h-28 ${item.bg} flex items-center justify-center shadow-md border border-white/10 shrink-0 transition-transform duration-300 hover:scale-102`}
+              className={`w-24 sm:w-32 lg:w-36 h-20 sm:h-24 lg:h-28 ${item.bg} flex items-center justify-center shadow-md border border-white/10 shrink-0 transition-transform duration-300 hover:scale-102`}
             >
               {renderLogoContent(item)}
             </div>
@@ -247,7 +247,7 @@ export const UnderstandingJapan = () => {
   const current = tabs[activeTab];
 
   return (
-    <section className="bg-[#090D16] text-white py-20 lg:py-24 relative overflow-hidden border-b border-white/10">
+    <section className="bg-[#090D16] text-white py-14 sm:py-20 lg:py-24 relative overflow-hidden border-b border-white/10">
       
       {/* Dynamic Background Image Layers with Smooth Ken-Burns & Crossfade Animation */}
       {tabs.map((tab, idx) => (
@@ -265,22 +265,22 @@ export const UnderstandingJapan = () => {
       {/* Dark Gradient Overlay to ensure text readability across all background images */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#090D16] via-[#090D16]/85 to-[#090D16]/40 pointer-events-none"></div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Narrative & Interactive Tabs */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-5 sm:space-y-6">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B] block">
               UNDERSTANDING JAPAN
             </span>
 
-            {/* Tab Buttons (No horizontal scrollbar) */}
-            <div className="flex border-b border-white/15 gap-4 sm:gap-6 pt-2 overflow-hidden flex-wrap">
+            {/* Tab Buttons (Horizontally scrollable on mobile) */}
+            <div className="flex border-b border-white/15 gap-4 sm:gap-6 pt-2 overflow-x-auto flex-nowrap scrollbar-none pb-1">
               {tabs.map((tab, idx) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(idx)}
-                  className={`pb-3 text-[11px] sm:text-xs font-bold tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer relative ${
+                  className={`pb-3 text-[11px] sm:text-xs font-bold tracking-wider uppercase transition-all duration-300 whitespace-nowrap cursor-pointer relative shrink-0 ${
                     activeTab === idx
                       ? 'text-white'
                       : 'text-slate-400 hover:text-slate-200'
@@ -295,9 +295,9 @@ export const UnderstandingJapan = () => {
             </div>
 
             {/* Dynamic Content with Smooth Entrance Animation */}
-            <div key={activeTab} className="space-y-6 animate-in fade-in-50 duration-500">
+            <div key={activeTab} className="space-y-5 sm:space-y-6 animate-in fade-in-50 duration-500">
               {/* Tab Title in Playfair Display Serif */}
-              <h2 className="font-editorial text-4xl sm:text-5xl font-bold text-white leading-tight">
+              <h2 className="font-editorial text-3xl sm:text-5xl font-bold text-white leading-tight">
                 {current.title}
               </h2>
 
@@ -307,7 +307,7 @@ export const UnderstandingJapan = () => {
               </p>
 
               {/* Red Bullet Points */}
-              <div className="space-y-3.5 pt-2">
+              <div className="space-y-3 pt-1 sm:pt-2">
                 {current.bullets.map((bullet, idx) => (
                   <div key={idx} className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-[#C83B3B] shrink-0"></div>
@@ -321,10 +321,10 @@ export const UnderstandingJapan = () => {
           </div>
 
           {/* Right Column: Vertically Scrolling Marquee Columns of Japanese Brand Logos */}
-          <div className="lg:col-span-6 relative flex justify-center lg:justify-end gap-3 sm:gap-4 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]">
-            {renderLogoColumn(column1Logos, 'animate-marquee-up')}
-            {renderLogoColumn(column2Logos, 'animate-marquee-down')}
-            {renderLogoColumn(column3Logos, 'animate-marquee-up')}
+          <div className="lg:col-span-6 relative flex justify-center lg:justify-end gap-2.5 sm:gap-4 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] pt-4 lg:pt-0">
+            {renderLogoColumn(column1Logos, 'animate-marquee-up', false)}
+            {renderLogoColumn(column2Logos, 'animate-marquee-down', false)}
+            {renderLogoColumn(column3Logos, 'animate-marquee-up', true)}
           </div>
 
         </div>

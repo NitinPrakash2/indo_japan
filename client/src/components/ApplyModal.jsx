@@ -16,13 +16,28 @@ export const ApplyModal = ({ isOpen, onClose }) => {
   // Lock background body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.setAttribute('data-menu-open', 'true');
+
+      return () => {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        document.body.removeAttribute('data-menu-open');
+        window.scrollTo(0, scrollY);
+      };
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [isOpen]);
 
   const sectorOptions = [
@@ -46,29 +61,29 @@ export const ApplyModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
       <div 
-        className="relative w-full max-w-xl bg-[#F6F3ED] border border-black/10 shadow-2xl p-6 sm:p-8 rounded-none animate-in zoom-in-95 duration-200 my-auto"
+        className="relative w-full max-w-xl bg-[#F6F3ED] border border-black/10 shadow-2xl p-5 sm:p-8 rounded-none animate-in zoom-in-95 duration-200 my-auto max-h-[92vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 text-[#444444] hover:text-[#C83B3B] transition-colors cursor-pointer"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 text-[#444444] hover:text-[#C83B3B] transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Modal Header */}
-        <div className="mb-6 pr-8">
-          <div className="inline-flex items-center gap-2 mb-2">
-            <span className="kanji-stamp !w-7 !h-7 !text-xs">日</span>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#C83B3B]">
+        <div className="mb-4 sm:mb-6 pr-7 sm:pr-8">
+          <div className="inline-flex items-center gap-2 mb-1.5 sm:mb-2">
+            <span className="kanji-stamp !w-6 !h-6 sm:!w-7 sm:!h-7 !text-[11px] sm:!text-xs">日</span>
+            <span className="text-[9.5px] sm:text-[10px] font-bold uppercase tracking-widest text-[#C83B3B]">
               APPLICATION • TOKYO 2026
             </span>
           </div>
-          <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-[#1A1A1A]">
+          <h3 className="font-editorial text-xl sm:text-3xl font-bold text-[#1A1A1A] leading-tight">
             Apply for Japan Immersion
           </h3>
           <p className="text-xs text-[#555555] mt-1">
@@ -77,11 +92,11 @@ export const ApplyModal = ({ isOpen, onClose }) => {
         </div>
 
         {submitted ? (
-          <div className="py-12 text-center space-y-3">
+          <div className="py-10 sm:py-12 text-center space-y-3">
             <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-7 h-7" />
             </div>
-            <h4 className="font-editorial text-2xl font-bold text-[#1A1A1A]">
+            <h4 className="font-editorial text-xl sm:text-2xl font-bold text-[#1A1A1A]">
               Application Submitted
             </h4>
             <p className="text-xs text-[#555555] max-w-xs mx-auto">
@@ -89,7 +104,7 @@ export const ApplyModal = ({ isOpen, onClose }) => {
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-3.5">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
             <div>
               <label className="block text-[11px] font-bold uppercase tracking-wider text-[#333333] mb-1">
                 Full Name *
@@ -100,7 +115,7 @@ export const ApplyModal = ({ isOpen, onClose }) => {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="e.g. Vikram Malhotra"
-                className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
+                className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-sm sm:text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
               />
             </div>
 
@@ -115,7 +130,7 @@ export const ApplyModal = ({ isOpen, onClose }) => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="vikram@company.com"
-                  className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-sm sm:text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
                 />
               </div>
 
@@ -129,7 +144,7 @@ export const ApplyModal = ({ isOpen, onClose }) => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="+91 98200 12345"
-                  className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-sm sm:text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
                 />
               </div>
             </div>
@@ -145,7 +160,7 @@ export const ApplyModal = ({ isOpen, onClose }) => {
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   placeholder="e.g. Apex Global"
-                  className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-sm sm:text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
                 />
               </div>
 
@@ -159,7 +174,7 @@ export const ApplyModal = ({ isOpen, onClose }) => {
                   value={formData.designation}
                   onChange={(e) => setFormData({ ...formData, designation: e.target.value })}
                   placeholder="e.g. Managing Director"
-                  className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/15 text-sm sm:text-xs text-[#1A1A1A] rounded-none focus:outline-none focus:border-[#C83B3B]"
                 />
               </div>
             </div>

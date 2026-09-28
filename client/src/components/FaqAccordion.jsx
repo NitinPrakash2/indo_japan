@@ -60,16 +60,16 @@ export const FaqAccordion = () => {
   };
 
   return (
-    <section id="faq" className="py-24 bg-[#F6F3ED] border-b border-black/5">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8">
-        <div className="text-center mb-16">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
+    <section id="faq" className="py-14 sm:py-24 bg-[#F6F3ED] border-b border-black/5">
+      <div className="max-w-4xl mx-auto px-4 sm:px-8">
+        <div className="text-center mb-10 sm:mb-16">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#C83B3B]">
             FREQUENTLY ASKED QUESTIONS
           </span>
-          <h2 className="font-editorial text-4xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
+          <h2 className="font-editorial text-3xl sm:text-5xl font-bold text-[#1A1A1A] mt-2">
             Everything You Need to <span className="italic text-[#C83B3B]">Know</span>
           </h2>
-          <p className="text-sm text-[#666666] mt-3">
+          <p className="text-xs sm:text-sm text-[#666666] mt-2.5 max-w-xl mx-auto px-2">
             Clear answers regarding cohort curation, visits, logistics, and registration guidelines.
           </p>
         </div>
@@ -79,27 +79,27 @@ export const FaqAccordion = () => {
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <div key={idx} className="py-5 transition-colors">
+              <div key={idx} className="py-4 sm:py-5 transition-colors">
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full flex items-center justify-between text-left gap-4 cursor-pointer group"
+                  className="w-full flex items-center justify-between text-left gap-3 sm:gap-4 cursor-pointer group py-1"
                 >
-                  <span className={`text-base sm:text-lg font-semibold transition-colors ${
+                  <span className={`text-sm sm:text-lg font-semibold transition-colors pr-2 ${
                     isOpen ? 'text-[#C83B3B] font-editorial' : 'text-[#222222] group-hover:text-[#C83B3B]'
                   }`}>
                     {faq.q}
                   </span>
-                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-all ${
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center shrink-0 transition-all ${
                     isOpen 
                       ? 'border-[#C83B3B] bg-[#C83B3B] text-white' 
                       : 'border-black/15 bg-white text-[#555555] group-hover:border-[#C83B3B]'
                   }`}>
-                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    {isOpen ? <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="pt-4 pb-2 text-xs sm:text-sm text-[#555555] leading-relaxed pr-10 animate-in fade-in-50 duration-200">
+                  <div className="pt-3 sm:pt-4 pb-2 text-xs sm:text-sm text-[#555555] leading-relaxed pr-2 sm:pr-10 animate-in fade-in-50 duration-200">
                     {faq.a}
                   </div>
                 )}
