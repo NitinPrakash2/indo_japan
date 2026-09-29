@@ -1,86 +1,197 @@
 import React from 'react';
-import fujiPagodaImg from '../assets/max-bender-FuxYvi-hcWQ-unsplash.jpg';
-import titleBadge from '../assets/hero_japan_title_badge.webp';
+import { 
+  ArrowRight, 
+  Compass, 
+  ShieldCheck, 
+  MapPin, 
+  Calendar, 
+  Users, 
+  Award 
+} from 'lucide-react';
+import heroBgImg from '../assets/hero_japan_executive.jpg';
 
 export const Hero = ({ onOpenApply }) => {
+  const scrollToItinerary = () => {
+    const el = document.getElementById('itinerary');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToPillars = () => {
+    const el = document.getElementById('pillars');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="banner" className="relative isolate overflow-hidden bg-[#F8F6F1] min-h-[520px] sm:min-h-[640px] flex items-center justify-center">
-      {/* Background Fuji & Pagoda Image with the exact Japanese paper effect */}
+    <section id="banner" className="relative isolate overflow-hidden bg-[#F6F3ED] border-b border-black/[0.08] min-h-[720px] lg:min-h-[850px] flex flex-col justify-center">
+      {/* Cinematic High-Resolution Japan Background Image */}
       <img
-        src={fujiPagodaImg}
-        alt="Mount Fuji and Chureito Pagoda Japan"
-        className="absolute inset-0 -z-20 w-full h-full object-cover object-[center_32%] pointer-events-none opacity-30 mix-blend-multiply filter contrast-[0.98] saturate-[0.90]"
+        src={heroBgImg}
+        alt="Mount Fuji, Pagoda and Golden Sunrise in Japan"
+        className="absolute inset-0 -z-30 w-full h-full object-cover object-[center_32%] pointer-events-none filter brightness-[0.98] contrast-[1.03] saturate-[1.08]"
       />
 
-      {/* Atmospheric Soft Gradient Overlays (exact reference website style) */}
-      {/* 1. Overall high-key paper wash */}
+      {/* Atmospheric Soft Gradient Overlays to keep image vividly visible while ensuring text readability */}
+      <div 
+        className="absolute inset-0 -z-20 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to bottom, 
+              rgba(246, 243, 237, 0.78) 0%, 
+              rgba(246, 243, 237, 0.42) 28%, 
+              rgba(246, 243, 237, 0.48) 60%, 
+              rgba(246, 243, 237, 0.94) 94%,
+              #F6F3ED 100%
+            )
+          `
+        }}
+        aria-hidden="true"
+      />
       <div 
         className="absolute inset-0 -z-10 pointer-events-none"
         style={{
-          backgroundImage: 'linear-gradient(to bottom, rgba(248, 246, 241, 0.60) 0%, rgba(248, 246, 241, 0.35) 45%, rgba(248, 246, 241, 0.25) 100%)'
+          backgroundImage: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(246, 243, 237, 0.85) 0%, rgba(246, 243, 237, 0.35) 65%, transparent 100%)'
         }}
         aria-hidden="true"
       />
 
-      {/* 2. Soft radial glow in center so text has maximum clarity and contrast */}
-      <div 
-        className="absolute inset-0 -z-10 pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(ellipse 85% 70% at 50% 48%, rgba(248, 246, 241, 0.92) 0%, rgba(248, 246, 241, 0.45) 65%, transparent 100%)'
-        }}
-        aria-hidden="true"
-      />
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-10 sm:pt-14 pb-12 sm:pb-16 flex flex-col items-center text-center">
+        
+        {/* Status Capsule: 25-Leader Delegation */}
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 border border-black/10 shadow-sm backdrop-blur-md mb-5 animate-in fade-in duration-700">
+          <span className="w-2 h-2 rounded-full bg-[#C83B3B] animate-pulse" />
+          <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.20em] font-bold text-[#141312]">
+            EXCLUSIVE 25-LEADER DELEGATION • TOKYO & NAGOYA 2026
+          </span>
+          <span className="hidden sm:inline-block w-px h-3 bg-black/15" />
+          <span className="hidden sm:inline text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#C83B3B] font-bold">
+            CONFIDENTIAL ADMISSIONS
+          </span>
+        </div>
 
-      {/* 3. Bottom melt gradient into next section */}
-      <div 
-        className="absolute inset-x-0 bottom-0 -z-10 h-36 sm:h-48 md:h-72 pointer-events-none"
-        style={{
-          backgroundImage: 'linear-gradient(to bottom, transparent 0%, rgba(248, 246, 241, 0.7) 45%, #F8F6F1 100%)'
-        }}
-        aria-hidden="true"
-      />
+        {/* Brand Seal Header */}
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <span className="h-px w-8 sm:w-12 bg-black/20" />
+          <span className="text-[11px] sm:text-xs font-mono tracking-[0.22em] uppercase font-bold text-[#444444]">
+            THE ECONOMIC TIMES IMMERSIONS
+          </span>
+          <span className="h-px w-8 sm:w-12 bg-black/20" />
+        </div>
 
-      {/* Hero Content Container */}
-      <div className="w-full max-w-[82rem] mx-auto px-4 sm:px-6 md:px-12 pt-10 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-24 text-center">
-        {/* Title Graphic / Badge (ET Immersions Japan Edition with Kanji Stamp) */}
-        <h1 className="m-0 flex justify-center items-center" id="hero-title">
-          <img
-            src={titleBadge}
-            alt="ET Immersions — Japan Edition: Experience Japan through business, leadership & culture"
-            className="h-auto w-full max-w-[17rem] xs:max-w-[19rem] sm:max-w-[26rem] md:max-w-[32rem] object-contain drop-shadow-xs"
-          />
+        {/* Majestic Editorial Main Headline */}
+        <h1 className="font-editorial text-3xl sm:text-5xl md:text-6xl lg:text-[66px] font-bold text-[#141312] leading-[1.12] tracking-tight max-w-4xl mx-auto mb-5 drop-shadow-xs">
+          The Zen of Precision Meets <br className="hidden sm:inline" />
+          <span className="italic text-[#C83B3B] font-normal block sm:inline mt-1 sm:mt-0">
+            The Frontier of Autonomous AI
+          </span>
         </h1>
 
-        {/* Lead Narrative & Details */}
-        <div className="mt-5 sm:mt-8">
-          <div className="grid justify-items-center gap-5 sm:gap-6">
-            <p className="max-w-2xl mx-auto text-sm sm:text-[0.9375rem] md:text-[1.0625rem] leading-[1.65] text-[#4A4A4A] font-normal font-sans px-2">
-              Curated for business leaders, with access to influential companies, industry leaders and institutions — complemented by peer exchange, innovation visits and experiences that reveal Japan beyond the boardroom.
-            </p>
+        {/* Authoritative Subtitle Narrative */}
+        <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed text-[#2D2A26] font-normal px-2 mb-7">
+          A high-trust, 5-day closed-door expedition strictly curated for 25 Indian enterprise chairmen, promoters, and deep-tech founders. Direct boardroom dialogues, zero-defect robotics facilities, and the longevity operating systems of 100-year Japanese dynasties.
+        </p>
 
-            {/* Red Separator + Location & Dates */}
-            <div className="grid gap-1.5 sm:gap-2 border-t-2 border-[#C83B3B] pt-3.5 sm:pt-4 w-full max-w-[300px]">
-              <p className="font-sans tracking-[0.2em] sm:tracking-[0.22em] uppercase text-[#1A1A1A] text-sm md:text-base font-semibold">
-                Tokyo, Japan
-              </p>
-              <p className="font-sans tracking-[0.2em] sm:tracking-[0.24em] uppercase text-[#1A1A1A] text-[10px] sm:text-[0.6875rem] font-medium">
-                29 August – 02 September 2026
-              </p>
-            </div>
-
-            {/* Apply CTA Button */}
-            <div className="flex w-full max-w-xs flex-col sm:flex-row sm:max-w-none items-center justify-center gap-4 pt-1">
-              <button
-                type="button"
-                onClick={onOpenApply}
-                className="inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 px-8 text-xs font-semibold tracking-[0.18em] sm:tracking-[0.2em] uppercase text-white bg-[#C83B3B] border border-[#C83B3B] hover:bg-[#B32D2D] hover:border-[#B32D2D] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 cursor-pointer active:scale-98"
-              >
-                <span>Apply to join</span>
-                <span className="text-sm">→</span>
-              </button>
-            </div>
+        {/* Glassmorphic Event Metadata Ribbon */}
+        <div className="inline-flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs sm:text-[13px] text-[#141312] font-semibold py-3 px-6 sm:px-8 rounded-full bg-white/85 border border-black/12 backdrop-blur-md shadow-xs mb-8">
+          <div className="flex items-center gap-2">
+            <MapPin className="w-4 h-4 text-[#C83B3B] shrink-0" />
+            <span className="tracking-wide">Tokyo <span className="clean-amp text-[0.88em]">&amp;</span> Nagoya, Japan</span>
+          </div>
+          <span className="hidden sm:inline text-black/20">•</span>
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-[#C83B3B] shrink-0" />
+            <span className="tracking-wide">29 August – 02 September 2026</span>
+          </div>
+          <span className="hidden sm:inline text-black/20">•</span>
+          <div className="flex items-center gap-2">
+            <Users className="w-4 h-4 text-[#C83B3B] shrink-0" />
+            <span className="tracking-wide">Strictly Capped at 25 Leaders</span>
           </div>
         </div>
+
+        {/* Dual Call to Action */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto mb-4">
+          <button
+            type="button"
+            onClick={onOpenApply}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#C83B3B] hover:bg-[#B52D2D] text-white text-xs font-bold uppercase tracking-[0.18em] shadow-[0_8px_25px_rgba(200,59,59,0.32)] hover:shadow-[0_10px_32px_rgba(200,59,59,0.42)] transition-all cursor-pointer active:scale-98"
+          >
+            <span>Apply for Delegation</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+
+          <button
+            type="button"
+            onClick={scrollToItinerary}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-white/90 hover:bg-white text-[#141312] border border-black/15 text-xs font-semibold uppercase tracking-[0.16em] backdrop-blur-md transition-all shadow-xs hover:border-black/30 cursor-pointer active:scale-98"
+          >
+            <Compass className="w-4 h-4 text-[#C83B3B]" />
+            <span>View 5-Day Roadmap</span>
+          </button>
+        </div>
+
+        {/* Chatham House Rule Trust Assurance */}
+        <div className="flex items-center justify-center gap-2 text-[11px] text-[#666666] font-mono mb-12">
+          <ShieldCheck className="w-3.5 h-3.5 text-[#C83B3B]" />
+          <span>Conducted under strict Chatham House Rule • Non-competing cohort curation</span>
+        </div>
+
+        {/* Telemetry Metric Strip (The 4 Frosted Glass Metric Cards) */}
+        <div className="w-full max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-left">
+          <div className="bg-white/85 backdrop-blur-md border border-black/[0.10] p-4 sm:p-5 shadow-sm hover:border-[#C83B3B]/40 hover:bg-white/95 transition-all">
+            <div className="flex items-center justify-between text-[#C83B3B] mb-1.5">
+              <span className="font-editorial text-2xl sm:text-3xl font-bold text-[#141312]">05</span>
+              <Calendar className="w-4 h-4 opacity-75" />
+            </div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[#141312]">Curated Days</p>
+            <p className="text-[11px] text-[#666666] mt-0.5">Tokyo & Nagoya industrial heartland</p>
+          </div>
+
+          <div className="bg-white/85 backdrop-blur-md border border-black/[0.10] p-4 sm:p-5 shadow-sm hover:border-[#C83B3B]/40 hover:bg-white/95 transition-all">
+            <div className="flex items-center justify-between text-[#C83B3B] mb-1.5">
+              <span className="font-editorial text-2xl sm:text-3xl font-bold text-[#141312]">14+</span>
+              <Award className="w-4 h-4 opacity-75" />
+            </div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[#141312]">Boardroom Dialogues</p>
+            <p className="text-[11px] text-[#666666] mt-0.5">CEOs, METI policy & tech leaders</p>
+          </div>
+
+          <div className="bg-white/85 backdrop-blur-md border border-black/[0.10] p-4 sm:p-5 shadow-sm hover:border-[#C83B3B]/40 hover:bg-white/95 transition-all">
+            <div className="flex items-center justify-between text-[#C83B3B] mb-1.5">
+              <span className="font-editorial text-2xl sm:text-3xl font-bold text-[#141312]">04</span>
+              <Compass className="w-4 h-4 opacity-75" />
+            </div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[#141312]">Frontier Lab Visits</p>
+            <p className="text-[11px] text-[#666666] mt-0.5">Zero-defect robotics & smart factory floors</p>
+          </div>
+
+          <div className="bg-white/85 backdrop-blur-md border border-black/[0.10] p-4 sm:p-5 shadow-sm hover:border-[#C83B3B]/40 hover:bg-white/95 transition-all">
+            <div className="flex items-center justify-between text-[#C83B3B] mb-1.5">
+              <span className="font-editorial text-2xl sm:text-3xl font-bold text-[#141312]">25</span>
+              <Users className="w-4 h-4 opacity-75" />
+            </div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[#141312]">Delegates Only</p>
+            <p className="text-[11px] text-[#666666] mt-0.5">Strict peer-curation under Chatham House Rule</p>
+          </div>
+        </div>
+
+        {/* Linear/SaaS-Style Scroll Down Prompter */}
+        <div className="pt-10 flex flex-col items-center justify-center">
+          <button
+            type="button"
+            onClick={scrollToPillars}
+            className="group inline-flex flex-col items-center gap-2 text-[10px] font-mono uppercase tracking-[0.22em] text-[#666666] hover:text-[#C83B3B] transition-colors cursor-pointer"
+          >
+            <span className="group-hover:translate-y-0.5 transition-transform">SCROLL TO EXPLORE</span>
+            <div className="w-5 h-8 rounded-full border border-black/25 group-hover:border-[#C83B3B] flex items-start justify-center p-1 transition-colors bg-white/50 backdrop-blur-xs">
+              <div className="w-1 h-2 rounded-full bg-[#C83B3B] animate-soft-bounce" />
+            </div>
+          </button>
+        </div>
+
       </div>
     </section>
   );

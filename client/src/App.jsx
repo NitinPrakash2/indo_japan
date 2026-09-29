@@ -1,49 +1,64 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { VisionOverview } from './components/VisionOverview';
-import { UnderstandingJapan } from './components/UnderstandingJapan';
-import { SpeakersGrid } from './components/SpeakersGrid';
-import { ImmersionExperience } from './components/ImmersionExperience';
-import { WhyEconomicTimes } from './components/WhyEconomicTimes';
-import { ExperiencePillars } from './components/ExperiencePillars';
-import { WhoShouldParticipate } from './components/WhoShouldParticipate';
-import { FullWidthCtaBanner } from './components/FullWidthCtaBanner';
-import { FaqAccordion } from './components/FaqAccordion';
-import { PartnerWithUs } from './components/PartnerWithUs';
-import { ContactUs } from './components/ContactUs';
+import { FrontierBentoMatrix } from './components/FrontierBentoMatrix';
+import { ExpeditionItinerary } from './components/ExpeditionItinerary';
+import { InstitutionalEcosystem } from './components/InstitutionalEcosystem';
+import { DistinguishedHosts } from './components/DistinguishedHosts';
+import { CohortExclusivity } from './components/CohortExclusivity';
+import { ExecutiveInclusions } from './components/ExecutiveInclusions';
+import { FrontierVideoBanner } from './components/FrontierVideoBanner';
+import { ExecutiveFaq } from './components/ExecutiveFaq';
 import { Footer } from './components/Footer';
 import { FloatingWidgets } from './components/FloatingWidgets';
 import { ApplyModal } from './components/ApplyModal';
+import { ScrollProgressBar } from './components/ScrollProgressBar';
 
 function App() {
   const [isApplyOpen, setIsApplyOpen] = useState(false);
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-[#F6F3ED] text-[#222222] selection:bg-[#C83B3B] selection:text-white flex flex-col">
-      {/* Top Header */}
+      {/* SaaS Scroll Reading Progress Bar */}
+      <ScrollProgressBar />
+
+      {/* Top Fixed Header with Frosted Glassmorphism */}
       <Header onOpenApply={() => setIsApplyOpen(true)} />
 
-      {/* Main Summit Content */}
+      {/* Main Executive Mission Architecture */}
       <main className="flex-1">
+        {/* 1. Hero: Zen & Frontier Innovation */}
         <Hero onOpenApply={() => setIsApplyOpen(true)} />
-        <VisionOverview />
-        <UnderstandingJapan />
-        <SpeakersGrid />
-        <ImmersionExperience />
-        <WhyEconomicTimes />
-        <ExperiencePillars />
-        <WhoShouldParticipate />
-        <FullWidthCtaBanner onOpenApply={() => setIsApplyOpen(true)} />
-        <FaqAccordion />
-        <PartnerWithUs onOpenApply={() => setIsApplyOpen(true)} />
-        <ContactUs />
+
+        {/* 2. The 4 Strategic Pillars: Bento Matrix */}
+        <FrontierBentoMatrix onOpenApply={() => setIsApplyOpen(true)} />
+
+        {/* 3. The 5-Day Closed-Door Expedition Itinerary (Interactive) */}
+        <ExpeditionItinerary onOpenApply={() => setIsApplyOpen(true)} />
+
+        {/* 4. Japanese Industrial Titans & Government Ministries Lineup */}
+        <InstitutionalEcosystem />
+
+        {/* 5. Faculty, Statesmen & Thought Leaders Dossier */}
+        <DistinguishedHosts onOpenApply={() => setIsApplyOpen(true)} />
+
+        {/* 6. The 25-Leader Cohort Exclusivity & Chatham House Protocol */}
+        <CohortExclusivity onOpenApply={() => setIsApplyOpen(true)} />
+
+        {/* 7. 5-Star Luxury Accommodations, Gran Class & Concierge */}
+        <ExecutiveInclusions />
+
+        {/* 8. Cinematic Looping Video Banner */}
+        <FrontierVideoBanner onOpenApply={() => setIsApplyOpen(true)} />
+
+        {/* 9. Delegation Protocols & Comprehensive FAQ */}
+        <ExecutiveFaq onOpenApply={() => setIsApplyOpen(true)} />
       </main>
 
       {/* Footer */}
       <Footer />
 
-      {/* Interactive Modals and Floating Widgets */}
+      {/* Floating Action Widgets & Executive Application Dossier Modal */}
       <FloatingWidgets />
       <ApplyModal isOpen={isApplyOpen} onClose={() => setIsApplyOpen(false)} />
     </div>

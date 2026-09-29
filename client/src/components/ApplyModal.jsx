@@ -78,8 +78,8 @@ export const ApplyModal = ({ isOpen, onClose }) => {
         {/* Modal Header */}
         <div className="mb-4 sm:mb-6 pr-7 sm:pr-8">
           <div className="inline-flex items-center gap-2 mb-1.5 sm:mb-2">
-            <span className="kanji-stamp !w-6 !h-6 sm:!w-7 sm:!h-7 !text-[11px] sm:!text-xs">日</span>
-            <span className="text-[9.5px] sm:text-[10px] font-bold uppercase tracking-widest text-[#C83B3B]">
+            <span className="w-2 h-2 rounded-full bg-[#C83B3B]"></span>
+            <span className="text-[9.5px] sm:text-[10px] font-bold uppercase tracking-widest text-[#C83B3B] font-mono">
               APPLICATION • TOKYO 2026
             </span>
           </div>

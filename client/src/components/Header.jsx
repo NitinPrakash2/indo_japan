@@ -68,12 +68,11 @@ export const Header = ({ onOpenApply }) => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Immersion Experience', href: '#experience' },
-    { label: 'Speakers', href: '#speakers' },
+    { label: 'Strategic Pillars', href: '#pillars' },
+    { label: '5-Day Itinerary', href: '#itinerary' },
+    { label: 'Faculty & Hosts', href: '#hosts' },
+    { label: 'Inclusions', href: '#inclusions' },
     { label: 'FAQ', href: '#faq' },
-    { label: 'Partner With Us', href: '#partner' },
-    { label: 'Contact Us', href: '#contact' },
   ];
 
   const handleNavClick = (e, href) => {
@@ -90,15 +89,19 @@ export const Header = ({ onOpenApply }) => {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 backdrop-blur-xl [-webkit-backdrop-blur:20px] ${
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
           scrolled 
-            ? 'shadow-[0_4px_20px_rgba(0,0,0,0.06)] border-b border-black/[0.06] py-2.5 sm:py-3' 
-            : 'border-b border-black/[0.04] py-3 sm:py-3.5'
+            ? 'py-2.5 sm:py-3' 
+            : 'py-3 sm:py-3.5'
         }`}
         style={{
-          backgroundColor: scrolled ? 'rgba(246, 243, 237, 0.78)' : 'rgba(246, 243, 237, 0.88)',
-          backdropFilter: 'blur(20px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.45)' : 'rgba(255, 255, 255, 0.32)',
+          backdropFilter: 'blur(30px) saturate(210%) brightness(102%)',
+          WebkitBackdropFilter: 'blur(30px) saturate(210%) brightness(102%)',
+          borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.09)' : '1px solid rgba(0, 0, 0, 0.05)',
+          boxShadow: scrolled
+            ? '0 12px 36px -8px rgba(0, 0, 0, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.95)'
+            : 'inset 0 1px 0 0 rgba(255, 255, 255, 0.80)',
         }}
       >
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 flex items-center justify-between">
@@ -126,7 +129,8 @@ export const Header = ({ onOpenApply }) => {
               <a
                 key={idx}
                 href={link.href}
-                className="text-[13px] font-normal text-[#2B2B2B] hover:text-[#C83B3B] tracking-normal transition-colors duration-200"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-[13px] font-normal text-[#2B2B2B] hover:text-[#C83B3B] tracking-normal transition-colors duration-200 cursor-pointer"
               >
                 {link.label}
               </a>
