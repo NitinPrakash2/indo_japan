@@ -1,9 +1,9 @@
 import React from 'react';
 import { Bed, Train, Utensils, Languages, PlaneTakeoff, ShieldCheck } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
-import hotelImg from '../assets/japan_palace_hotel.jpg';
-import trainImg from '../assets/japan_shinkansen.jpg';
-import kaisekiImg from '../assets/japan_kaiseki_dining.jpg';
+import hotelImg from '../assets/japan_palace_hotel.webp';
+import trainImg from '../assets/japan_shinkansen.webp';
+import kaisekiImg from '../assets/japan_kaiseki_dining.webp';
 
 export const ExecutiveInclusions = () => {
   const inclusions = [
@@ -90,6 +90,8 @@ export const ExecutiveInclusions = () => {
                       <img
                         src={item.image}
                         alt={item.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />

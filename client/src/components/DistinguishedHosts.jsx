@@ -1,10 +1,10 @@
 import React from 'react';
 import { Award, Briefcase, GraduationCap, Globe2, ArrowUpRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
-import ambassadorImg from '../assets/host_ambassador.jpg';
-import fujimotoImg from '../assets/host_professor_fujimoto.jpg';
-import kitanoImg from '../assets/host_dr_kitano.jpg';
-import tanimotoImg from '../assets/host_yuka_tanimoto.jpg';
+import ambassadorImg from '../assets/host_ambassador.webp';
+import fujimotoImg from '../assets/host_professor_fujimoto.webp';
+import kitanoImg from '../assets/host_dr_kitano.webp';
+import tanimotoImg from '../assets/host_yuka_tanimoto.webp';
 
 export const DistinguishedHosts = ({ onOpenApply }) => {
   const leaders = [
@@ -91,6 +91,8 @@ export const DistinguishedHosts = ({ onOpenApply }) => {
                   <img
                     src={leader.image}
                     alt={leader.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-56 sm:h-full object-cover object-top filter contrast-[1.02] group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent sm:hidden" />

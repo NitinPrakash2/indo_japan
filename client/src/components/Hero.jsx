@@ -8,7 +8,7 @@ import {
   Users, 
   Award 
 } from 'lucide-react';
-import heroBgImg from '../assets/hero_japan_executive.jpg';
+import heroBgImg from '../assets/hero_japan_executive.webp';
 
 export const Hero = ({ onOpenApply }) => {
   const scrollToItinerary = () => {
@@ -31,6 +31,8 @@ export const Hero = ({ onOpenApply }) => {
       <img
         src={heroBgImg}
         alt="Mount Fuji, Pagoda and Golden Sunrise in Japan"
+        fetchPriority="high"
+        decoding="async"
         className="absolute inset-0 -z-30 w-full h-full object-cover object-[center_32%] pointer-events-none filter brightness-[0.98] contrast-[1.03] saturate-[1.08]"
       />
 

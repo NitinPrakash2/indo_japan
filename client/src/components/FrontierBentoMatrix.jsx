@@ -1,7 +1,7 @@
 import React from 'react';
 import { Cpu, Shield, TrendingUp, Sparkles, ArrowUpRight, Zap, Target, Repeat } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
-import roboticsImg from '../assets/japan_robotics_factory.jpg';
+import roboticsImg from '../assets/japan_robotics_factory.webp';
 
 export const FrontierBentoMatrix = ({ onOpenApply }) => {
   const pillars = [
@@ -102,6 +102,8 @@ export const FrontierBentoMatrix = ({ onOpenApply }) => {
                       <img
                         src={pillar.bgImage}
                         alt={pillar.title}
+                        loading="lazy"
+                        decoding="async"
                         className="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:opacity-25 transition-opacity duration-500 -z-10 pointer-events-none filter contrast-125"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/80 to-white/60 -z-10" />

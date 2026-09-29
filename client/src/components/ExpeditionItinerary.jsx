@@ -4,11 +4,11 @@ import {
   Train, CheckCircle2, Lock 
 } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
-import hotelImg from '../assets/japan_palace_hotel.jpg';
-import roboticsImg from '../assets/japan_robotics_factory.jpg';
-import kaisekiImg from '../assets/japan_kaiseki_dining.jpg';
-import trainImg from '../assets/japan_shinkansen.jpg';
-import zenImg from '../assets/hero_japan_executive.jpg';
+import hotelImg from '../assets/japan_palace_hotel.webp';
+import roboticsImg from '../assets/japan_robotics_factory.webp';
+import kaisekiImg from '../assets/japan_kaiseki_dining.webp';
+import trainImg from '../assets/japan_shinkansen.webp';
+import zenImg from '../assets/hero_japan_executive.webp';
 
 // Precision helper to format '&' with single, clean typography spacing
 const renderCleanAmp = (text) => {
@@ -492,6 +492,8 @@ export const ExpeditionItinerary = ({ onOpenApply }) => {
                     <img
                       src={current.image}
                       alt={current.theme}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover filter contrast-[1.03] group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />

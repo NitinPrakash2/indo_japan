@@ -144,7 +144,6 @@ body.menu-open {
   transform: translateY(28px);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
               transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 .reveal-init.revealed {
   opacity: 1;
@@ -156,7 +155,6 @@ body.menu-open {
   transform: translateX(-32px);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
               transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 .reveal-left.revealed {
   opacity: 1;
@@ -168,7 +166,6 @@ body.menu-open {
   transform: translateX(32px);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
               transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 .reveal-right.revealed {
   opacity: 1;
@@ -180,7 +177,6 @@ body.menu-open {
   transform: scale(0.96) translateY(20px);
   transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
               transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 .reveal-scale.revealed {
   opacity: 1;
@@ -190,7 +186,6 @@ body.menu-open {
 .reveal-fade {
   opacity: 0;
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity;
 }
 .reveal-fade.revealed {
   opacity: 1;
