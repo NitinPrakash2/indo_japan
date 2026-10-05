@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Clock, ShieldCheck, ArrowRight, Building2, 
   Train, CheckCircle2, Lock 
 } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { fetchSanityData, GET_ITINERARY } from '../sanity/queries';
+import { urlFor } from '../sanity/image';
 import hotelImg from '../assets/japan_palace_hotel.webp';
 import roboticsImg from '../assets/japan_robotics_factory.webp';
 import kaisekiImg from '../assets/japan_kaiseki_dining.webp';
@@ -32,7 +34,7 @@ const renderCleanAmp = (text) => {
 export const ExpeditionItinerary = ({ onOpenApply }) => {
   const [activeDay, setActiveDay] = useState(1);
 
-  const itineraryData = [
+  const defaultItineraryData = [
     {
       day: 1,
       date: 'Saturday, 29 August 2026',
@@ -282,6 +284,22 @@ export const ExpeditionItinerary = ({ onOpenApply }) => {
       ],
     },
   ];
+
+  const [itineraryData, setItineraryData] = useState(defaultItineraryData);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchSanityData(GET_ITINERARY).then((data) => {
+      if (isMounted && data && Array.isArray(data) && data.length > 0) {
+        const mapped = data.map((d) => ({
+          ...d,
+          image: d.image?.asset ? urlFor(d.image).auto('format').fit('max').width(1200).url() : null,
+        }));
+        setItineraryData(mapped);
+      }
+    });
+    return () => { isMounted = false; };
+  }, []);
 
   const current = itineraryData.find((item) => item.day === activeDay) || itineraryData[0];
 

@@ -1,36 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Plus, HelpCircle, ShieldCheck, Mail, Phone } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { fetchSanityData, GET_FAQS } from '../sanity/queries';
+
+const defaultFaqs = [
+  {
+    q: 'Who is eligible to participate in the 25-leader delegation?',
+    a: 'The cohort is strictly reserved for enterprise promoters, chairmen, managing directors, group CEOs, and deep-tech founders. Every applicant is reviewed by our admissions committee to ensure peer-level conversations, non-competing industry verticals, and high strategic relevance.',
+  },
+  {
+    q: 'What is included in the executive delegation enrollment fee?',
+    a: 'The fee is comprehensive of 5-star luxury accommodations (The Palace Hotel Tokyo and Nagoya Marriott), private carriage transit on the Shinkansen Gran Class bullet train, all curated Michelin-starred and private Ryotei banquets, factory clearance protocol fees, dedicated bilingual executive interpreters for all sessions, and VIP private coach transit throughout Tokyo and Nagoya.',
+  },
+  {
+    q: 'How does the strict non-competing cohort policy work?',
+    a: 'To guarantee absolute candor in boardroom discussions, our admissions committee ensures that direct, head-to-head competitors from the same primary industry vertical are not seated in the same 25-leader delegation. Early applicants receive sector priority.',
+  },
+  {
+    q: 'What are the visa processing protocols for Japan?',
+    a: 'Our mission secretariate provides official bilateral invitation letters, institutional sponsorship documentation, and direct facilitation with the Embassy of Japan in New Delhi and Consulates in Mumbai, Chennai, and Kolkata for expedited delegation visa issuance.',
+  },
+  {
+    q: 'Can an enterprise send two delegates (e.g. Promoter & Next-Gen Leader)?',
+    a: 'Yes. Up to two senior representatives from the same promoter group or founder team (such as Chairman and Managing Director, or Promoter and Next-Gen CXO) may apply together, subject to the remaining seats within the 25-leader cap.',
+  },
+  {
+    q: 'How are the sessions governed under the Chatham House Rule?',
+    a: 'Every meeting—whether with former ministers, Toyota plant directors, or fellow delegates—operates under the Chatham House Rule. Participants are free to use the insights gained, but neither the identity nor the affiliation of the speaker may be disclosed publicly.',
+  },
+];
 
 export const ExecutiveFaq = ({ onOpenApply }) => {
   const [openIdx, setOpenIdx] = useState(0);
+  const [faqs, setFaqs] = useState(defaultFaqs);
 
-  const faqs = [
-    {
-      q: 'Who is eligible to participate in the 25-leader delegation?',
-      a: 'The cohort is strictly reserved for enterprise promoters, chairmen, managing directors, group CEOs, and deep-tech founders. Every applicant is reviewed by our admissions committee to ensure peer-level conversations, non-competing industry verticals, and high strategic relevance.',
-    },
-    {
-      q: 'What is included in the executive delegation enrollment fee?',
-      a: 'The fee is comprehensive of 5-star luxury accommodations (The Palace Hotel Tokyo and Nagoya Marriott), private carriage transit on the Shinkansen Gran Class bullet train, all curated Michelin-starred and private Ryotei banquets, factory clearance protocol fees, dedicated bilingual executive interpreters for all sessions, and VIP private coach transit throughout Tokyo and Nagoya.',
-    },
-    {
-      q: 'How does the strict non-competing cohort policy work?',
-      a: 'To guarantee absolute candor in boardroom discussions, our admissions committee ensures that direct, head-to-head competitors from the same primary industry vertical are not seated in the same 25-leader delegation. Early applicants receive sector priority.',
-    },
-    {
-      q: 'What are the visa processing protocols for Japan?',
-      a: 'Our mission secretariate provides official bilateral invitation letters, institutional sponsorship documentation, and direct facilitation with the Embassy of Japan in New Delhi and Consulates in Mumbai, Chennai, and Kolkata for expedited delegation visa issuance.',
-    },
-    {
-      q: 'Can an enterprise send two delegates (e.g. Promoter & Next-Gen Leader)?',
-      a: 'Yes. Up to two senior representatives from the same promoter group or founder team (such as Chairman and Managing Director, or Promoter and Next-Gen CXO) may apply together, subject to the remaining seats within the 25-leader cap.',
-    },
-    {
-      q: 'How are the sessions governed under the Chatham House Rule?',
-      a: 'Every meeting—whether with former ministers, Toyota plant directors, or fellow delegates—operates under the Chatham House Rule. Participants are free to use the insights gained, but neither the identity nor the affiliation of the speaker may be disclosed publicly.',
-    },
-  ];
+  useEffect(() => {
+    let isMounted = true;
+    fetchSanityData(GET_FAQS).then((data) => {
+      if (isMounted && data && Array.isArray(data) && data.length > 0) {
+        const mapped = data.map((item) => ({
+          q: item.question || item.q,
+          a: item.answer || item.a,
+        }));
+        setFaqs(mapped);
+      }
+    });
+    return () => { isMounted = false; };
+  }, []);
 
   return (
     <section id="faq" className="py-20 sm:py-28 bg-[#FAF8F5] border-b border-black/[0.06] relative">

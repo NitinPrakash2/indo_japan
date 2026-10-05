@@ -1,50 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Award, Briefcase, GraduationCap, Globe2, ArrowUpRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { fetchSanityData, GET_HOSTS } from '../sanity/queries';
+import { urlFor } from '../sanity/image';
 import ambassadorImg from '../assets/host_ambassador.webp';
 import fujimotoImg from '../assets/host_professor_fujimoto.webp';
 import kitanoImg from '../assets/host_dr_kitano.webp';
 import tanimotoImg from '../assets/host_yuka_tanimoto.webp';
 
+const defaultLeaders = [
+  {
+    name: 'H.E. Kenji Hiramatsu',
+    role: 'Former Ambassador of Japan to India',
+    organization: 'President, Japan Institute of International Affairs (JIIA)',
+    image: ambassadorImg,
+    topic: 'Bilateral Geopolitical Corridors & Supply-Chain Sovereignty',
+    desc: 'Former top envoy spearheading the $35B Japan-India bilateral investment pact. Briefs delegates on cross-border diplomacy, strategic joint ventures, and governmental incentives.',
+    credentials: ['Ex-Ambassador to India', 'Ministry of Foreign Affairs Senior Envoy', 'Bilateral Economic Architect'],
+  },
+  {
+    name: 'Prof. Takahiro Fujimoto',
+    role: 'Global Authority on Monozukuri & TPS',
+    organization: 'Director, Manufacturing Management Research Center (University of Tokyo)',
+    image: fujimotoImg,
+    topic: 'The Architecture of Zero-Defect Manufacturing & Kaizen',
+    desc: 'World’s foremost academic authority on the Toyota Production System. Decodes the architectural difference between modular Western assembly and Japanese integrated craft.',
+    credentials: ['Harvard D.B.A.', 'Tokyo University Emeritus', 'Author of "The Evolution of a Manufacturing System"'],
+  },
+  {
+    name: 'Dr. Hiroaki Kitano',
+    role: 'CEO, Sony AI & CTO, Sony Group',
+    organization: 'Sony Group Corporation / The Systems Biology Institute',
+    image: kitanoImg,
+    topic: 'Human-Centric AI & Autonomous Physical Intelligence',
+    desc: 'Pioneering researcher bridging autonomous robotics, culinary sensory intelligence, and next-generation edge AI operating systems.',
+    credentials: ['Nature Scientific Laureate', 'RoboCup Founder', 'Turing AI World Forum Keynote'],
+  },
+  {
+    name: 'Yuka Tanimoto',
+    role: 'Executive Managing Editor',
+    organization: 'Forbes Japan / International Economic Anchor',
+    image: tanimotoImg,
+    topic: 'Centennial Shinise Dynasties & Multi-Generational Wealth',
+    desc: 'Has interviewed over 1,000 global CEOs, prime ministers, and dynastic family promoters. Unpacks succession governance and stakeholder stewardship.',
+    credentials: ['Bloomberg Anchor Ex-Tokyo', 'World Economic Forum Media Fellow', 'Centennial Governance Author'],
+  },
+];
+
 export const DistinguishedHosts = ({ onOpenApply }) => {
-  const leaders = [
-    {
-      name: 'H.E. Kenji Hiramatsu',
-      role: 'Former Ambassador of Japan to India',
-      organization: 'President, Japan Institute of International Affairs (JIIA)',
-      image: ambassadorImg,
-      topic: 'Bilateral Geopolitical Corridors & Supply-Chain Sovereignty',
-      desc: 'Former top envoy spearheading the $35B Japan-India bilateral investment pact. Briefs delegates on cross-border diplomacy, strategic joint ventures, and governmental incentives.',
-      credentials: ['Ex-Ambassador to India', 'Ministry of Foreign Affairs Senior Envoy', 'Bilateral Economic Architect'],
-    },
-    {
-      name: 'Prof. Takahiro Fujimoto',
-      role: 'Global Authority on Monozukuri & TPS',
-      organization: 'Director, Manufacturing Management Research Center (University of Tokyo)',
-      image: fujimotoImg,
-      topic: 'The Architecture of Zero-Defect Manufacturing & Kaizen',
-      desc: 'World’s foremost academic authority on the Toyota Production System. Decodes the architectural difference between modular Western assembly and Japanese integrated craft.',
-      credentials: ['Harvard D.B.A.', 'Tokyo University Emeritus', 'Author of "The Evolution of a Manufacturing System"'],
-    },
-    {
-      name: 'Dr. Hiroaki Kitano',
-      role: 'CEO, Sony AI & CTO, Sony Group',
-      organization: 'Sony Group Corporation / The Systems Biology Institute',
-      image: kitanoImg,
-      topic: 'Human-Centric AI & Autonomous Physical Intelligence',
-      desc: 'Pioneering researcher bridging autonomous robotics, culinary sensory intelligence, and next-generation edge AI operating systems.',
-      credentials: ['Nature Scientific Laureate', 'RoboCup Founder', 'Turing AI World Forum Keynote'],
-    },
-    {
-      name: 'Yuka Tanimoto',
-      role: 'Executive Managing Editor',
-      organization: 'Forbes Japan / International Economic Anchor',
-      image: tanimotoImg,
-      topic: 'Centennial Shinise Dynasties & Multi-Generational Wealth',
-      desc: 'Has interviewed over 1,000 global CEOs, prime ministers, and dynastic family promoters. Unpacks succession governance and stakeholder stewardship.',
-      credentials: ['Bloomberg Anchor Ex-Tokyo', 'World Economic Forum Media Fellow', 'Centennial Governance Author'],
-    },
-  ];
+  const [leaders, setLeaders] = useState(defaultLeaders);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchSanityData(GET_HOSTS).then((data) => {
+      if (isMounted && data && Array.isArray(data) && data.length > 0) {
+        const mapped = data.map((leader) => ({
+          ...leader,
+          image: leader.image?.asset ? urlFor(leader.image).auto('format').fit('crop').width(600).height(750).url() : null,
+        }));
+        setLeaders(mapped);
+      }
+    });
+    return () => { isMounted = false; };
+  }, []);
 
   return (
     <section id="hosts" className="py-20 sm:py-28 bg-[#FAF8F5] border-b border-black/[0.06] relative">

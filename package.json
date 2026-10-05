@@ -5,6 +5,7 @@
   "scripts": {
     "client": "npm --prefix client run dev",
     "server": "npm --prefix server run dev",
+    "studio": "npm --prefix studio-indo-japan run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build:client": "npm --prefix client run build",
     "install:all": "npm install && npm --prefix client install && npm --prefix server install"
